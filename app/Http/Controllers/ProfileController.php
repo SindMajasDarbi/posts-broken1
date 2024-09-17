@@ -57,4 +57,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function addComment(Request $request, Post $post){
+        $post->comments()->create($request->all());
+        return redirect()->route('posts.show', $post);
+    }
 }
